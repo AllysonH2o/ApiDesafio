@@ -1,0 +1,20 @@
+{
+  "name": "apidesafio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/server.ts",
+  "scripts": {
+    "start": "npx ts-node src/server.ts"
+  },
+  "keywords": [],
+  "author": "Allyson Araujo",
+  "license": "",
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3"
+  }
+}
