@@ -10,9 +10,11 @@
   "author": "Allyson Araujo",
   "license": "",
   "dependencies": {
+    "better-sqlite3": "^11.8.1",
     "express": "^4.21.2"
   },
   "devDependencies": {
+    "@types/better-sqlite3": "^7.6.12",
     "@types/express": "^5.0.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.3"

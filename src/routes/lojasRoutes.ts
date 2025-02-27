@@ -1,8 +1,10 @@
 import { Router } from 'express';
-import { getLojas } from '../controllers/lojasController';
+import LojaController from '../controllers/lojasController';
 
 const router = Router();
 
-router.route('/:cep').get(getLojas);
+router.route('/').post(LojaController.createLoja);
+
+router.route('/:cep').get(LojaController.getAllLojas);
 
 export default router;
