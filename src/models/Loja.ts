@@ -4,4 +4,8 @@ export interface Loja {
   numero: number;
   email: string;
   cep: number;
+  uf: string;
+  cidade: string;
+  bairro: string;
+  endereco: string;
 }

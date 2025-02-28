@@ -10,7 +10,11 @@ db.exec(`
     nome TEXT NOT NULL,
     numero INTEGER UNIQUE NOT NULL,
     email TEXT UNIQUE NOT NULL,
-    cep INTEGER NOT NULL
+    cep INTEGER NOT NULL,
+    uf TEXT NOT NULL,
+    cidade TEXT NOT NULL,
+    bairro TEXT NOT NULL,
+    endereco TEXT NOT NULL
   );
 `);
 

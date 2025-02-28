@@ -1,4 +1,5 @@
 import { Router } from 'express';
+
 import LojaController from '../controllers/lojasController';
 
 const router = Router();
