@@ -4,19 +4,13 @@ import { Loja } from '../models/Loja';
 class LojaService {
   createLoja(lojaData: Loja) {
     const stmt = db.prepare(
-      'INSERT INTO lojas (nome, numero, email, cep, uf, cidade, bairro, rua, lat, lon) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
+      'INSERT INTO lojas (nome, telefone, cep, latlon) VALUES (?, ?, ?, ?)'
     );
     const result = stmt.run(
       lojaData.nome,
-      lojaData.numero,
-      lojaData.email,
+      lojaData.telefone,
       lojaData.cep,
-      lojaData.uf,
-      lojaData.cidade,
-      lojaData.bairro,
-      lojaData.rua,
-      lojaData.lat,
-      lojaData.lon
+      lojaData.latlon
     );
     return { id: result.lastInsertRowid, lojaData };
   }

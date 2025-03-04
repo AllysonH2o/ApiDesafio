@@ -1,13 +1,7 @@
 export interface Loja {
   id: number;
   nome: string;
-  numero: number;
-  email: string;
+  telefone: number;
   cep: number;
-  uf: string;
-  cidade: string;
-  bairro: string;
-  rua: string;
-  lat: number;
-  lon: number;
+  latlon: string;
 }

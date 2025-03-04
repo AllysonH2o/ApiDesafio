@@ -8,15 +8,9 @@ db.exec(`
   CREATE TABLE IF NOT EXISTS lojas (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     nome TEXT NOT NULL,
-    numero INTEGER UNIQUE NOT NULL,
-    email TEXT UNIQUE NOT NULL,
+    telefone INTEGER UNIQUE NOT NULL,
     cep INTEGER NOT NULL,
-    uf TEXT NOT NULL,
-    cidade TEXT NOT NULL,
-    bairro TEXT NOT NULL,
-    rua TEXT NOT NULL,
-    lat DOUBLE NOT NULL,
-    lon DOUBLE NOT NULL
+    latlon TEXT NOT NULL
   );
 `);
 

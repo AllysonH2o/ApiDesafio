@@ -5,77 +5,59 @@ import lojaService from '../services/lojaService';
 import { Loja } from '../models/Loja';
 
 class LojaController {
-  async createLoja(req: Request, res: Response) {
-    const { nome, numero, email, cep } = req.body;
-
-    const viaCep = await axios.get(`https://viacep.com.br/ws/${cep}/json`);
-
-    const { logradouro: rua, bairro, localidade: cidade, uf } = viaCep.data;
-
-    const endereco = `${rua.replace(/ /g, '+')},+${cidade.replace(
-      / /g,
-      '+'
-    )},+${uf}`;
-
-    const nominatim = await axios.get(
-      `https://nominatim.openstreetmap.org/search?q=${endereco}&format=json`
-    );
-
-    const { lat, lon } = nominatim.data[0];
+  createLoja(req: Request, res: Response) {
+    const { nome, telefone, cep, latlon } = req.body;
 
     const loja = lojaService.createLoja({
       nome,
-      numero,
-      email,
+      telefone,
       cep,
-      uf,
-      cidade,
-      bairro,
-      rua,
-      lat,
-      lon,
+      latlon,
     } as Loja);
     res.status(201).json(loja);
   }
 
   getAllLojas(req: Request, res: Response) {
-    const loja = lojaService.getAllLojas();
+    const lojas = lojaService.getAllLojas();
 
-    res.status(200).json({ data: loja });
+    res.status(200).json({ data: lojas });
   }
 
   async getLojas(req: Request, res: Response) {
-    const { cep } = req.params;
+    try {
+      const origin = req.body.latlon;
 
-    const viaCep = await axios.get(`https://viacep.com.br/ws/${cep}/json`);
+      const lojas = lojaService.getAllLojas();
 
-    const { logradouro: rua, localidade: cidade, uf } = viaCep.data;
+      if (lojas.length === 0)
+        res.status(500).json({ message: 'Nenhuma loja cadastrada' });
 
-    const endereco = `${rua.replace(/ /g, '+')},+${cidade.replace(
-      / /g,
-      '+'
-    )},+${uf}`;
+      const destinations = lojas.map((loja) => `${loja.latlon}`).join('|'); //lojas maybe
 
-    const nominatim = await axios.get(
-      `https://nominatim.openstreetmap.org/search?q=${endereco}&format=json`
-    );
+      const apiKey =
+        'J6gtpOgJMgsy6NzOYuRP7AA9Io3EY2nCAzIh4vgeUKB573pRs8JU6N02wfqVA6E3';
 
-    const origin = nominatim.data[0].lat + ',' + nominatim.data[0].lon;
+      const distanceMatrix = await axios.get(
+        `https://api.distancematrix.ai/maps/api/distancematrix/json?origins=${origin}&destinations=${destinations}&key=${apiKey}`
+      );
 
-    const loja = lojaService.getAllLojas();
+      const result: Partial<Loja>[] = [];
 
-    const destinations = loja
-      .map((loja) => `${loja.lat},${loja.lon}`)
-      .join('|');
+      for (let i = 0; i < lojas.length; i++) {
+        const loja = {
+          nome: lojas[i].nome,
+          telefone: lojas[i].telefone,
+          cep: lojas[i].cep,
+          endereco: distanceMatrix.data.destination_addresses[i],
+          distancia: distanceMatrix.data.rows[0].elements[i].distance.text,
+        };
+        result.push(loja);
+      }
 
-    const apiKey =
-      'J6gtpOgJMgsy6NzOYuRP7AA9Io3EY2nCAzIh4vgeUKB573pRs8JU6N02wfqVA6E3';
-
-    const distanceMatrix = await axios.get(
-      `https://api.distancematrix.ai/maps/api/distancematrix/json?origins=${origin}&destinations=${destinations}&key=${apiKey}`
-    );
-
-    res.status(200).json({ loja: loja, distancia: distanceMatrix.data });
+      res.status(200).json({ lojas: result });
+    } catch (err) {
+      res.status(404).json({ menssage: 'Nenhuma loja encontrada' });
+    }
   }
 }
 export default new LojaController();

@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import { getLatLon } from '../middlewares/apiMiddleware';
 
 import LojaController from '../controllers/lojasController';
 
@@ -7,8 +8,8 @@ const router = Router();
 router
   .route('/')
   .get(LojaController.getAllLojas)
-  .post(LojaController.createLoja);
+  .post(getLatLon, LojaController.createLoja);
 
-router.route('/:cep').get(LojaController.getLojas);
+router.route('/:cep').get(getLatLon, LojaController.getLojas);
 
 export default router;
