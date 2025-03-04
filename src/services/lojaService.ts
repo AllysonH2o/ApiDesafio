@@ -4,7 +4,7 @@ import { Loja } from '../models/Loja';
 class LojaService {
   createLoja(lojaData: Loja) {
     const stmt = db.prepare(
-      'INSERT INTO lojas (nome, numero, email, cep, uf, cidade, bairro, endereco) VALUES (?, ?, ?, ?, ?, ?, ?, ?)'
+      'INSERT INTO lojas (nome, numero, email, cep, uf, cidade, bairro, rua, lat, lon) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
     );
     const result = stmt.run(
       lojaData.nome,
@@ -14,7 +14,9 @@ class LojaService {
       lojaData.uf,
       lojaData.cidade,
       lojaData.bairro,
-      lojaData.endereco
+      lojaData.rua,
+      lojaData.lat,
+      lojaData.lon
     );
     return { id: result.lastInsertRowid, lojaData };
   }

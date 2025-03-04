@@ -7,5 +7,7 @@ export interface Loja {
   uf: string;
   cidade: string;
   bairro: string;
-  endereco: string;
+  rua: string;
+  lat: number;
+  lon: number;
 }

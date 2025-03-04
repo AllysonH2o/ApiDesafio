@@ -14,7 +14,9 @@ db.exec(`
     uf TEXT NOT NULL,
     cidade TEXT NOT NULL,
     bairro TEXT NOT NULL,
-    endereco TEXT NOT NULL
+    rua TEXT NOT NULL,
+    lat DOUBLE NOT NULL,
+    lon DOUBLE NOT NULL
   );
 `);
 
