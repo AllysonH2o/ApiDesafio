@@ -2,21 +2,21 @@ import db from '../config/database';
 import { Loja } from '../models/Loja';
 
 class LojaService {
-  async createLoja(lojaData: Loja) {
+  createLoja(lojaData: Loja) {
     const stmt = db.prepare(
-      'INSERT INTO lojas (nome, numero, email, cep) VALUES (?, ?, ?, ?)'
+      'INSERT INTO lojas (nome, telefone, cep, latlon) VALUES (?, ?, ?, ?)'
     );
     const result = stmt.run(
       lojaData.nome,
-      lojaData.numero,
-      lojaData.email,
-      lojaData.cep
+      lojaData.telefone,
+      lojaData.cep,
+      lojaData.latlon
     );
     return { id: result.lastInsertRowid, lojaData };
   }
 
-  async getAllLojas() {
-    return db.prepare('SELECT * FROM lojas').all();
+  getAllLojas() {
+    return db.prepare('SELECT * FROM lojas').all() as Loja[];
   }
 }
 

@@ -5,6 +5,6 @@ const app = express();
 
 app.use(express.json());
 
-app.use('/', lojasRouter);
+app.use('/api/', lojasRouter);
 
 export default app;

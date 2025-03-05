@@ -10,6 +10,7 @@
   "author": "Allyson Araujo",
   "license": "",
   "dependencies": {
+    "axios": "^1.8.1",
     "better-sqlite3": "^11.8.1",
     "express": "^4.21.2"
   },
