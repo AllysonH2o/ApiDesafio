@@ -1,5 +1,8 @@
 import express from 'express';
+import dotenv from 'dotenv';
 import lojasRouter from './routes/lojasRoutes';
+
+dotenv.config();
 
 const app = express();
 

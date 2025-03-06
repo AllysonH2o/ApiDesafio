@@ -9,7 +9,7 @@ db.exec(`
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     nome TEXT NOT NULL,
     telefone INTEGER UNIQUE NOT NULL,
-    cep INTEGER NOT NULL,
+    endereco TEXT NOT NULL,
     latlon TEXT NOT NULL
   );
 `);
