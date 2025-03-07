@@ -1,5 +1,11 @@
-import app from './app';
+import dotenv from 'dotenv';
 
-app.listen(3000, () => {
-  console.log('Servidor inicidado');
+import app from './app';
+import logger from './config/logger';
+
+dotenv.config();
+
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  logger.info(`Servidor rodando na porta ${port}`);
 });

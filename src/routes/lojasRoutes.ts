@@ -1,15 +1,18 @@
 import { Router } from 'express';
-import { getLatLon } from '../middlewares/apiMiddleware';
+import { getLatLon, getDistancias } from '../middlewares/apiMiddleware';
 
 import LojaController from '../controllers/lojasController';
 
 const router = Router();
 
-router
-  .route('/')
-  .get(LojaController.getAllLojas)
-  .post(getLatLon, LojaController.createLoja);
+router.route('/').post(getLatLon, LojaController.createLoja);
 
-router.route('/:cep').get(getLatLon, LojaController.getLojas);
+router
+  .route('/:cep')
+  .get(getLatLon, getDistancias, LojaController.getLojas100Km);
+
+router
+  .route('/proxima/:cep')
+  .get(getLatLon, getDistancias, LojaController.getAllLojas);
 
 export default router;

@@ -1,4 +1,5 @@
 import express from 'express';
+
 import lojasRouter from './routes/lojasRoutes';
 
 const app = express();

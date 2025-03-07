@@ -1,16 +1,21 @@
 import { Request, Response } from 'express';
-import axios from 'axios';
 
 import lojaService from '../services/lojaService';
 import { Loja } from '../models/Loja';
 
 class LojaController {
   createLoja(req: Request, res: Response) {
-    const { nome, telefone, cep, latlon } = req.body;
+    const { nome, telefone, latlon } = req.body;
+
+    const { rua, bairro, cidade, estado, cepViaCep: cep } = req.body.endereco;
 
     const loja = lojaService.createLoja({
       nome,
       telefone,
+      rua,
+      bairro,
+      cidade,
+      estado,
       cep,
       latlon,
     } as Loja);
@@ -18,46 +23,28 @@ class LojaController {
   }
 
   getAllLojas(req: Request, res: Response) {
-    const lojas = lojaService.getAllLojas();
+    const lojas: Partial<Loja>[] = req.body.lojas;
 
-    res.status(200).json({ data: lojas });
+    lojas.forEach((loja) => delete loja.distanciaValue);
+
+    res.status(200).json({ lojas: lojas });
   }
 
-  async getLojas(req: Request, res: Response) {
-    try {
-      const origin = req.body.latlon;
+  async getLojas100Km(req: Request, res: Response) {
+    const lojas: Partial<Loja>[] = req.body.lojas;
 
-      const lojas = lojaService.getAllLojas();
+    const lojasFiltradas = lojas.filter(
+      (loja) => loja.distanciaValue! <= 100000
+    );
 
-      if (lojas.length === 0)
-        res.status(500).json({ message: 'Nenhuma loja cadastrada' });
+    if (lojasFiltradas.length === 0)
+      res
+        .status(404)
+        .json({ message: 'Nenhuma loja encontrada no raio de 100 km' });
 
-      const destinations = lojas.map((loja) => `${loja.latlon}`).join('|'); //lojas maybe
+    lojasFiltradas.forEach((loja) => delete loja.distanciaValue);
 
-      const apiKey =
-        'J6gtpOgJMgsy6NzOYuRP7AA9Io3EY2nCAzIh4vgeUKB573pRs8JU6N02wfqVA6E3';
-
-      const distanceMatrix = await axios.get(
-        `https://api.distancematrix.ai/maps/api/distancematrix/json?origins=${origin}&destinations=${destinations}&key=${apiKey}`
-      );
-
-      const result: Partial<Loja>[] = [];
-
-      for (let i = 0; i < lojas.length; i++) {
-        const loja = {
-          nome: lojas[i].nome,
-          telefone: lojas[i].telefone,
-          cep: lojas[i].cep,
-          endereco: distanceMatrix.data.destination_addresses[i],
-          distancia: distanceMatrix.data.rows[0].elements[i].distance.text,
-        };
-        result.push(loja);
-      }
-
-      res.status(200).json({ lojas: result });
-    } catch (err) {
-      res.status(404).json({ menssage: 'Nenhuma loja encontrada' });
-    }
+    res.status(200).json({ lojas: lojasFiltradas });
   }
 }
 export default new LojaController();
