@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import axios from 'axios';
 
+import logger from '../config/logger';
 import lojaService from '../services/lojaService';
 import { Loja } from '../models/Loja';
 
@@ -9,14 +10,20 @@ export async function getLatLon(
   res: Response,
   next: NextFunction
 ) {
+  const cep = req.body.cep || req.params.cep;
   try {
-    const cep = req.body.cep || req.params.cep;
-
     const viaCep = await axios.get(`https://viacep.com.br/ws/${cep}/json`);
 
-    const { logradouro, localidade, uf, bairro } = viaCep.data;
+    const {
+      logradouro: rua,
+      bairro,
+      localidade: cidade,
+      estado,
+      cep: cepViaCep,
+      uf,
+    } = viaCep.data;
 
-    const endereco = `${logradouro.replace(/ /g, '+')},+${localidade.replace(
+    const endereco = `${rua.replace(/ /g, '+')},+${cidade.replace(
       / /g,
       '+'
     )},+${uf}`;
@@ -25,10 +32,13 @@ export async function getLatLon(
       `https://nominatim.openstreetmap.org/search?q=${endereco}&format=json`
     );
 
-    req.body.endereco = `${logradouro}, ${bairro}, ${localidade} - ${uf}, ${viaCep.data.cep}`;
+    req.body.endereco = { rua, bairro, cidade, estado, cepViaCep };
     req.body.latlon = `${nominatim.data[0].lat},${nominatim.data[0].lon}`;
     next();
   } catch (err) {
+    logger.error(
+      `Falha na api viaCep ou nominatin ao acessar o cep ${cep}, error:  ${err}`
+    );
     res.status(400).json({ message: 'cep inválido' });
   }
 }
@@ -43,10 +53,12 @@ export async function getDistancias(
 
     const lojasBD = lojaService.getAllLojas();
 
-    if (lojasBD.length === 0)
+    if (lojasBD.length === 0) {
+      logger.error(`Falha ao procurar lojas no banco de dados`);
       res
         .status(500)
         .json({ message: 'Algo deu errado, tente novamente mais tarde' });
+    }
 
     const destinations = lojasBD.map((loja) => `${loja.latlon}`).join('|');
 
@@ -60,7 +72,11 @@ export async function getDistancias(
       const loja = {
         nome: lojasBD[i].nome,
         telefone: lojasBD[i].telefone,
-        endereco: lojasBD[i].endereco,
+        rua: lojasBD[i].rua,
+        bairro: lojasBD[i].bairro,
+        cidade: lojasBD[i].cidade,
+        estado: lojasBD[i].estado,
+        cep: lojasBD[i].cep,
         distancia: distanceMatrix.data.rows[0].elements[i].distance.text,
         distanciaValue: distanceMatrix.data.rows[0].elements[i].distance.value,
       };
@@ -73,6 +89,7 @@ export async function getDistancias(
 
     next();
   } catch (err) {
+    logger.error(`Falha na api Distancematrix Error: ${err}`);
     res
       .status(500)
       .json({ message: 'Algo deu errado, tente novamente mais tarde' });

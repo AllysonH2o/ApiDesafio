@@ -7,10 +7,16 @@ class LojaController {
   createLoja(req: Request, res: Response) {
     const { nome, telefone, latlon } = req.body;
 
+    const { rua, bairro, cidade, estado, cepViaCep: cep } = req.body.endereco;
+
     const loja = lojaService.createLoja({
       nome,
       telefone,
-      endereco: req.body.endereco,
+      rua,
+      bairro,
+      cidade,
+      estado,
+      cep,
       latlon,
     } as Loja);
     res.status(201).json(loja);
