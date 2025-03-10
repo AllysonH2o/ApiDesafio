@@ -37,3 +37,21 @@
 {"level":"info","message":"Servidor rodando na porta 3000","timestamp":"2025-03-07T01:08:43.014Z"}
 {"level":"info","message":"Conectado com o Banco de dados","timestamp":"2025-03-07T01:14:23.853Z"}
 {"level":"info","message":"Servidor rodando na porta 3000","timestamp":"2025-03-07T01:14:23.894Z"}
+{"level":"info","message":"Conectado com o Banco de dados","timestamp":"2025-03-07T17:09:57.121Z"}
+{"level":"info","message":"Servidor rodando na porta 3000","timestamp":"2025-03-07T17:09:57.178Z"}
+{"level":"info","message":"Conectado com o Banco de dados","timestamp":"2025-03-09T00:56:53.653Z"}
+{"level":"info","message":"Servidor rodando na porta 3000","timestamp":"2025-03-09T00:56:53.760Z"}
+{"level":"info","message":"Conectado com o Banco de dados","timestamp":"2025-03-09T01:21:15.445Z"}
+{"level":"info","message":"Servidor rodando na porta 3000","timestamp":"2025-03-09T01:21:15.530Z"}
+{"level":"info","message":"Conectado com o Banco de dados","timestamp":"2025-03-09T01:32:11.323Z"}
+{"level":"info","message":"Servidor rodando na porta 3000","timestamp":"2025-03-09T01:32:11.387Z"}
+{"level":"info","message":"Conectado com o Banco de dados","timestamp":"2025-03-10T01:23:59.853Z"}
+{"level":"info","message":"Servidor rodando na porta 3000","timestamp":"2025-03-10T01:23:59.897Z"}
+{"level":"info","message":"Conectado com o Banco de dados","timestamp":"2025-03-10T01:39:54.171Z"}
+{"level":"info","message":"Servidor rodando na porta 3000","timestamp":"2025-03-10T01:39:54.208Z"}
+{"level":"error","message":"Falha na api viaCep ou nominatin ao acessar o cep undefined, error:  AxiosError: Request failed with status code 400","timestamp":"2025-03-10T01:40:00.573Z"}
+{"level":"info","message":"Conectado com o Banco de dados","timestamp":"2025-03-10T02:08:38.038Z"}
+{"level":"info","message":"Servidor rodando na porta 3000","timestamp":"2025-03-10T02:08:38.081Z"}
+{"level":"error","message":"Falha na api viaCep ou nominatin ao acessar o cep 7020000, error:  AxiosError: Request failed with status code 400","timestamp":"2025-03-10T02:08:54.480Z"}
+{"level":"info","message":"Conectado com o Banco de dados","timestamp":"2025-03-10T02:09:28.730Z"}
+{"level":"info","message":"Servidor rodando na porta 3000","timestamp":"2025-03-10T02:09:28.771Z"}

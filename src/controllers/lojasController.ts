@@ -37,10 +37,12 @@ class LojaController {
       (loja) => loja.distanciaValue! <= 100000
     );
 
-    if (lojasFiltradas.length === 0)
+    if (lojasFiltradas.length === 0) {
       res
-        .status(404)
+        .status(200)
         .json({ message: 'Nenhuma loja encontrada no raio de 100 km' });
+      return;
+    }
 
     lojasFiltradas.forEach((loja) => delete loja.distanciaValue);
 

@@ -4,15 +4,24 @@ import axios from 'axios';
 import logger from '../config/logger';
 import lojaService from '../services/lojaService';
 import { Loja } from '../models/Loja';
+import { ViaCep } from '../models/ViaCep';
+import { Nominatim } from '../models/Nominatim';
+import { DistanceMatrix } from '../models/DistanceMatrix';
 
 export async function getLatLon(
   req: Request,
   res: Response,
   next: NextFunction
 ) {
-  const cep = req.body.cep || req.params.cep;
+  const cep: string = req.body.cep || req.params.cep;
+  if (cep.length !== 8) {
+    res.status(400).json({ message: 'cep inválido' });
+    return;
+  }
   try {
-    const viaCep = await axios.get(`https://viacep.com.br/ws/${cep}/json`);
+    const viaCep = await axios.get<ViaCep>(
+      `https://viacep.com.br/ws/${cep}/json`
+    );
 
     const {
       logradouro: rua,
@@ -28,7 +37,7 @@ export async function getLatLon(
       '+'
     )},+${uf}`;
 
-    const nominatim = await axios.get(
+    const nominatim = await axios.get<Nominatim[]>(
       `https://nominatim.openstreetmap.org/search?q=${endereco}&format=json`
     );
 
@@ -39,7 +48,7 @@ export async function getLatLon(
     logger.error(
       `Falha na api viaCep ou nominatin ao acessar o cep ${cep}, error:  ${err}`
     );
-    res.status(400).json({ message: 'cep inválido' });
+    res.status(400).json({ message: 'cep não encontrado' });
   }
 }
 
@@ -58,11 +67,12 @@ export async function getDistancias(
       res
         .status(500)
         .json({ message: 'Algo deu errado, tente novamente mais tarde' });
+      return;
     }
 
     const destinations = lojasBD.map((loja) => `${loja.latlon}`).join('|');
 
-    const distanceMatrix = await axios.get(
+    const distanceMatrix = await axios.get<DistanceMatrix>(
       `https://api.distancematrix.ai/maps/api/distancematrix/json?origins=${origin}&destinations=${destinations}&key=${process.env.API_KEY}`
     );
 
