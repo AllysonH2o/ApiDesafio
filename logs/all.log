@@ -1,0 +1,57 @@
+{"level":"info","message":"Servidor rodando na porta 3000","timestamp":"2025-03-06T18:58:35.514Z"}
+{"level":"info","message":"Servidor rodando na porta 3000","timestamp":"2025-03-06T19:39:42.435Z"}
+{"level":"info","message":"Servidor rodando na porta 3000","timestamp":"2025-03-06T19:40:12.303Z"}
+{"level":"error","message":"Falha ao procurar lojas no banco de dados","timestamp":"2025-03-06T19:40:35.500Z"}
+{"level":"info","message":"Servidor rodando na porta 3000","timestamp":"2025-03-06T19:42:41.875Z"}
+{"level":"info","message":"Conectado com o Banco de dados","timestamp":"2025-03-06T23:37:42.860Z"}
+{"level":"info","message":"Servidor rodando na porta 3000","timestamp":"2025-03-06T23:37:42.896Z"}
+{"level":"info","message":"Conectado com o Banco de dados","timestamp":"2025-03-06T23:51:53.071Z"}
+{"level":"info","message":"Servidor rodando na porta 3000","timestamp":"2025-03-06T23:51:53.126Z"}
+{"level":"error","message":"Falha ao procurar lojas no banco de dados","timestamp":"2025-03-06T23:52:07.566Z"}
+{"level":"info","message":"Conectado com o Banco de dados","timestamp":"2025-03-06T23:54:22.237Z"}
+{"level":"info","message":"Servidor rodando na porta 3000","timestamp":"2025-03-06T23:54:22.293Z"}
+{"level":"error","message":"Falha na api viaCep ou nominatin ao acessar o cep 55641140, error:  Error: getaddrinfo ENOTFOUND iacep.com.br","timestamp":"2025-03-06T23:54:36.880Z"}
+{"level":"info","message":"Conectado com o Banco de dados","timestamp":"2025-03-06T23:54:59.429Z"}
+{"level":"info","message":"Servidor rodando na porta 3000","timestamp":"2025-03-06T23:54:59.491Z"}
+{"level":"error","message":"Falha na api viaCep ou nominatin ao acessar o cep 55641140, error:  Error: getaddrinfo ENOTFOUND iacep.com.br","timestamp":"2025-03-06T23:55:06.904Z"}
+{"level":"info","message":"Conectado com o Banco de dados","timestamp":"2025-03-06T23:55:40.828Z"}
+{"level":"info","message":"Servidor rodando na porta 3000","timestamp":"2025-03-06T23:55:40.859Z"}
+{"level":"info","message":"Conectado com o Banco de dados","timestamp":"2025-03-07T00:19:45.456Z"}
+{"level":"info","message":"Servidor rodando na porta 3000","timestamp":"2025-03-07T00:19:45.491Z"}
+{"level":"error","message":"Falha na api viaCep ou nominatin ao acessar o cep undefined, error:  AxiosError: Request failed with status code 400","timestamp":"2025-03-07T00:19:54.522Z"}
+{"level":"info","message":"Conectado com o Banco de dados","timestamp":"2025-03-07T00:21:50.484Z"}
+{"level":"info","message":"Servidor rodando na porta 3000","timestamp":"2025-03-07T00:21:50.517Z"}
+{"level":"info","message":"Conectado com o Banco de dados","timestamp":"2025-03-07T00:30:58.102Z"}
+{"level":"info","message":"Servidor rodando na porta 3000","timestamp":"2025-03-07T00:30:58.130Z"}
+{"level":"error","message":"Falha na api viaCep ou nominatin ao acessar o cep 55641140, error:  Error: getaddrinfo ENOTFOUND iacep.com.br","timestamp":"2025-03-07T00:31:10.043Z"}
+{"level":"info","message":"Conectado com o Banco de dados","timestamp":"2025-03-07T00:31:41.912Z"}
+{"level":"info","message":"Servidor rodando na porta 3000","timestamp":"2025-03-07T00:31:41.945Z"}
+{"level":"info","message":"Conectado com o Banco de dados","timestamp":"2025-03-07T00:31:58.145Z"}
+{"level":"info","message":"Servidor rodando na porta 3000","timestamp":"2025-03-07T00:31:58.187Z"}
+{"level":"error","message":"Falha na api viaCep ou nominatin ao acessar o cep 55641140, error:  Error: getaddrinfo ENOTFOUND iacep.com.br","timestamp":"2025-03-07T00:32:14.347Z"}
+{"level":"info","message":"Conectado com o Banco de dados","timestamp":"2025-03-07T00:32:49.808Z"}
+{"level":"info","message":"Servidor rodando na porta 3000","timestamp":"2025-03-07T00:32:49.842Z"}
+{"level":"info","message":"Conectado com o Banco de dados","timestamp":"2025-03-07T01:06:55.773Z"}
+{"level":"info","message":"Servidor rodando na porta 3000","timestamp":"2025-03-07T01:06:55.807Z"}
+{"level":"info","message":"Conectado com o Banco de dados","timestamp":"2025-03-07T01:08:42.928Z"}
+{"level":"info","message":"Servidor rodando na porta 3000","timestamp":"2025-03-07T01:08:43.014Z"}
+{"level":"info","message":"Conectado com o Banco de dados","timestamp":"2025-03-07T01:14:23.853Z"}
+{"level":"info","message":"Servidor rodando na porta 3000","timestamp":"2025-03-07T01:14:23.894Z"}
+{"level":"info","message":"Conectado com o Banco de dados","timestamp":"2025-03-07T17:09:57.121Z"}
+{"level":"info","message":"Servidor rodando na porta 3000","timestamp":"2025-03-07T17:09:57.178Z"}
+{"level":"info","message":"Conectado com o Banco de dados","timestamp":"2025-03-09T00:56:53.653Z"}
+{"level":"info","message":"Servidor rodando na porta 3000","timestamp":"2025-03-09T00:56:53.760Z"}
+{"level":"info","message":"Conectado com o Banco de dados","timestamp":"2025-03-09T01:21:15.445Z"}
+{"level":"info","message":"Servidor rodando na porta 3000","timestamp":"2025-03-09T01:21:15.530Z"}
+{"level":"info","message":"Conectado com o Banco de dados","timestamp":"2025-03-09T01:32:11.323Z"}
+{"level":"info","message":"Servidor rodando na porta 3000","timestamp":"2025-03-09T01:32:11.387Z"}
+{"level":"info","message":"Conectado com o Banco de dados","timestamp":"2025-03-10T01:23:59.853Z"}
+{"level":"info","message":"Servidor rodando na porta 3000","timestamp":"2025-03-10T01:23:59.897Z"}
+{"level":"info","message":"Conectado com o Banco de dados","timestamp":"2025-03-10T01:39:54.171Z"}
+{"level":"info","message":"Servidor rodando na porta 3000","timestamp":"2025-03-10T01:39:54.208Z"}
+{"level":"error","message":"Falha na api viaCep ou nominatin ao acessar o cep undefined, error:  AxiosError: Request failed with status code 400","timestamp":"2025-03-10T01:40:00.573Z"}
+{"level":"info","message":"Conectado com o Banco de dados","timestamp":"2025-03-10T02:08:38.038Z"}
+{"level":"info","message":"Servidor rodando na porta 3000","timestamp":"2025-03-10T02:08:38.081Z"}
+{"level":"error","message":"Falha na api viaCep ou nominatin ao acessar o cep 7020000, error:  AxiosError: Request failed with status code 400","timestamp":"2025-03-10T02:08:54.480Z"}
+{"level":"info","message":"Conectado com o Banco de dados","timestamp":"2025-03-10T02:09:28.730Z"}
+{"level":"info","message":"Servidor rodando na porta 3000","timestamp":"2025-03-10T02:09:28.771Z"}

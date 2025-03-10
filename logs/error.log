@@ -1,0 +1,9 @@
+{"level":"error","message":"Falha ao procurar lojas no banco de dados","timestamp":"2025-03-06T19:40:35.500Z"}
+{"level":"error","message":"Falha ao procurar lojas no banco de dados","timestamp":"2025-03-06T23:52:07.566Z"}
+{"level":"error","message":"Falha na api viaCep ou nominatin ao acessar o cep 55641140, error:  Error: getaddrinfo ENOTFOUND iacep.com.br","timestamp":"2025-03-06T23:54:36.880Z"}
+{"level":"error","message":"Falha na api viaCep ou nominatin ao acessar o cep 55641140, error:  Error: getaddrinfo ENOTFOUND iacep.com.br","timestamp":"2025-03-06T23:55:06.904Z"}
+{"level":"error","message":"Falha na api viaCep ou nominatin ao acessar o cep undefined, error:  AxiosError: Request failed with status code 400","timestamp":"2025-03-07T00:19:54.522Z"}
+{"level":"error","message":"Falha na api viaCep ou nominatin ao acessar o cep 55641140, error:  Error: getaddrinfo ENOTFOUND iacep.com.br","timestamp":"2025-03-07T00:31:10.043Z"}
+{"level":"error","message":"Falha na api viaCep ou nominatin ao acessar o cep 55641140, error:  Error: getaddrinfo ENOTFOUND iacep.com.br","timestamp":"2025-03-07T00:32:14.347Z"}
+{"level":"error","message":"Falha na api viaCep ou nominatin ao acessar o cep undefined, error:  AxiosError: Request failed with status code 400","timestamp":"2025-03-10T01:40:00.573Z"}
+{"level":"error","message":"Falha na api viaCep ou nominatin ao acessar o cep 7020000, error:  AxiosError: Request failed with status code 400","timestamp":"2025-03-10T02:08:54.480Z"}
